@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<meta charset="utf-8"><link rel="stylesheet" href='/static/css/results.css' />
+
+
+<h1>Public Opinion On COVID-19 by Tweets</h1>
+<br>
+
+<body>
+  <div class="parent">
+
+    all tweets
+    <img class="image1" id="picture" src="data:image/jpeg;base64,{{ all_tweets_wordcloud }}">
+    neg
+
+    <img class="image2" id="picture" src="data:image/jpeg;base64,{{ neg_tweets_wordcloud }}">
+    <img class="image3" id="picture" src="data:image/jpeg;base64,{{ pos_tweets_wordcloud }}">
+      </div>
+  </body>
+
+{% endblock %}
