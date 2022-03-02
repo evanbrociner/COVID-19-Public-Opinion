@@ -13,7 +13,7 @@ from textblob import TextBlob
 app = Flask(__name__)
 
 def WordCloud_wrapper(tweets):
-    word_cloud = WordCloud(width=800, height=400,collocations = False, background_color = 'white').generate(tweets)
+    word_cloud = WordCloud(width=900, height=500,collocations = False, background_color = 'white').generate(tweets)
     img = BytesIO()
     word_cloud.to_image().save(img, 'PNG')
     img.seek(0)
@@ -52,6 +52,9 @@ def hello2():
         Requested_City = request.form['City']
         Requested_State = request.form['State']
 
+        print(Requested_City)
+        print(Requested_State)
+
         from datetime import datetime, timedelta
         days_to_subtract = 1
         Three_days_ago = datetime.today() - timedelta(days=days_to_subtract)
@@ -76,16 +79,21 @@ def hello2():
 
         Tweets_df = twint.storage.panda.Tweets_df
         print(Tweets_df)
+        print(Tweets_df['tweet'])
+
+        for cat in Tweets_df['tweet']:
+            print(cat.split()[1])
+
 
         text = " ".join(cat.split()[1] for cat in Tweets_df['tweet'])
         negative_tweets,postive_tweets = sentiment_analyzer(Tweets_df['tweet'].to_list())
 
-        all_tweets_wordcloud= WordCloud_wrapper(text)
-        neg_tweets_wordcloud= WordCloud_wrapper(negative_tweets)
-        pos_tweets_wordcloud= WordCloud_wrapper(postive_tweets)
+        all_wc= WordCloud_wrapper(text)
+        n_wd= WordCloud_wrapper(negative_tweets)
+        p_wd= WordCloud_wrapper(postive_tweets)
 
 
-        return render_template("results.html", all_tweets_wordcloud=all_tweets_wordcloud,plot=True,neg_tweets_wordcloud=neg_tweets_wordcloud,pos_tweets_wordcloud=pos_tweets_wordcloud)
+        return render_template("results.html", all_tweets_wordcloud=all_wc,plot=True,neg_tweets_wordcloud=n_wd,pos_tweets_wordcloud=p_wd,Requested_City=Requested_City,Requested_State=Requested_State)
     return render_template('homepage.html',plot=False)
 
 

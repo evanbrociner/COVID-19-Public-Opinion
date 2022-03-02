@@ -1,17 +1,35 @@
 {% extends "base.html" %}
 
 {% block content %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 <meta charset="utf-8"><link rel="stylesheet" href='/static/css/homepage.css' />
-
-
 <body>
-  <h1>Public Opinion On COVID-19 by Tweets</h1>
-  <hr>
-  <br>
-  <h2> View the most common words people have used to describe COVID-19 on Twitter
-  for the requested city.</h2>
-  <h3> Data results can take up to a few minutes. Please wait after you submit. </h3>
+   <div class="container">
+
+
+     <main role="main" class="container">
+       <div class="jumbotron">
+         <h1>Public Opinion On COVID-19 by Tweets</h1>
+         <p class="lead">View the most common words people have used to describe COVID-19 on Twitter
+         for the requested city over the past 4 weeks.
+         Data results can take up to a few minutes. Please wait after you submit. </p>
+         <a class="btn btn-lg btn-outline-primary" href="https://github.com/evanbrociner/public-opinion-covid19" role="button">View Source Code</a>
+       </div>
+     </main>
+
+     <div class="row newsletter">
+       <div class="input-group mb-3">
+         <form method="POST" action="{{ url_for('hello2') }}">
+
+
+       </div>
+     </div>
+
+
+   </div>
+
+
   <div class="container">
     <form method="POST" action="{{ url_for('hello2') }}">
       <p>City <input type="text" name="City" /></p>

@@ -1,23 +1,58 @@
 {% extends "base.html" %}
 
 {% block content %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-<meta charset="utf-8"><link rel="stylesheet" href='/static/css/results.css' />
-
-
-<h1>Public Opinion On COVID-19 by Tweets</h1>
-<br>
+<link rel="stylesheet" href='/static/css/results.css' />
 
 <body>
-  <div class="parent">
+  <div class="container">
 
-    all tweets
-    <img class="image1" id="picture" src="data:image/jpeg;base64,{{ all_tweets_wordcloud }}">
-    neg
 
-    <img class="image2" id="picture" src="data:image/jpeg;base64,{{ neg_tweets_wordcloud }}">
-    <img class="image3" id="picture" src="data:image/jpeg;base64,{{ pos_tweets_wordcloud }}">
+
+
+    <main role="main" class="container" >
+      <div class="jumbotron" style="text-align:center">
+        <h1>Public Opinion In     {{Requested_City}} On COVID-19 by Tweets</h1>
+        <p class="lead">View the most common words people have used to describe COVID-19 on Twitter
+          for the requested city over the past 4 weeks.
+          Data results can take up to a few minutes. Please wait after you submit. </p>
+        <a class="btn btn-lg btn-outline-primary" href="https://github.com/evanbrociner/public-opinion-covid19" role="button">View Source Code</a>
       </div>
-  </body>
+
+      <div class="jumbotron" style="height:50vh">
+        <h2>Stats Breakdown for {{Requested_City}}, {{Requested_State}}:</h2>
+
+
+        <p> asdas</p>
+      </div>
+
+
+
+      <div class="parent">
+        <div class="container-full-bg">
+          <div class="jumbotron" style="height:75vh;text-align:center"">
+
+             <h2> All Tweets</h2>
+             <img class=" image1" id="picture" src="data:image/jpeg;base64,{{ all_tweets_wordcloud }}">
+          </div>
+
+          <div class="jumbotron" style="height:75vh;text-align:center">
+               <h2> Negative Tweets</h2>
+             <img class=" image2" id="picture" src="data:image/jpeg;base64,{{ neg_tweets_wordcloud }}">
+          </div>
+
+          <div class="jumbotron" style="height:75vh;text-align:center"">
+               <h2> Postive Tweets</h2>
+             <img class=" image3" id="picture" src="data:image/jpeg;base64,{{ pos_tweets_wordcloud }}">
+          </div>
+
+        </div>
+      </div>
+
+    </main>
+  </div>
+</body>
+
 
 {% endblock %}
